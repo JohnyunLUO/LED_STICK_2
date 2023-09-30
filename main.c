@@ -63,10 +63,11 @@ void Systicks_Init(){
 }
 int main(void)
 { 
-  int k=1;
+  int k=1,l=1;
 	LED_config();
+	while(l);
 	UR_config();
-	
+
 	UR_Print("12345");
 	
 	while(k);

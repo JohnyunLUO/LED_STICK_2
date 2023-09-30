@@ -1,60 +1,54 @@
 #include "USART.h"
 void UR_config(){	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-	
-	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,  ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,  ENABLE);
 	GPIO_InitTypeDef GPIO_InitStruct;
+	
+	GPIO_InitStruct.GPIO_Pin=GPIO_Pin_9;             
 
-	GPIO_InitStruct.GPIO_Pin=GPIO_Pin_9;             /*!< Specifies the GPIO pins to be configured.
-                                      This parameter can be any value of @ref GPIO_pins_define */
+  GPIO_InitStruct.GPIO_Speed=GPIO_Speed_50MHz;  
 
-  GPIO_InitStruct.GPIO_Speed=GPIO_Speed_50MHz;  /*!< Specifies the speed for the selected pins.
-                                      This parameter can be a value of @ref GPIOSpeed_TypeDef */
-
-  GPIO_InitStruct.GPIO_Mode=GPIO_Mode_AF_PP;;    /*!< Specifies the operating mode for the selected pins.
-                                      This parameter can be a value of @ref GPIOMode_TypeDef */
+  GPIO_InitStruct.GPIO_Mode= GPIO_Mode_AF_PP;    
+	
 	GPIO_Init(GPIOA,&GPIO_InitStruct);
 	
-	GPIO_InitStruct.GPIO_Pin=GPIO_Pin_10;             /*!< Specifies the GPIO pins to be configured.
-                                      This parameter can be any value of @ref GPIO_pins_define */
+	GPIO_InitStruct.GPIO_Pin=GPIO_Pin_10;             
 
-
-  GPIO_InitStruct.GPIO_Mode=GPIO_Mode_IN_FLOATING;;;    /*!< Specifies the operating mode for the selected pins.
-                                      This parameter can be a value of @ref GPIOMode_TypeDef */
+  GPIO_InitStruct.GPIO_Mode= GPIO_Mode_IN_FLOATING;    
+	
 	GPIO_Init(GPIOA,&GPIO_InitStruct);
 	
 	USART_InitTypeDef USART_InitStruct;
-	
-	USART_InitStruct.USART_BaudRate=115200;            /*!< This member configures the USART communication baud rate.
+
+	USART_InitStruct.USART_BaudRate=115200 ;            /*!< This member configures the USART communication baud rate.
                                            The baud rate is computed using the following formula:
                                             - IntegerDivider = ((PCLKx) / (16 * (USART_InitStruct->USART_BaudRate)))
                                             - FractionalDivider = ((IntegerDivider - ((u32) IntegerDivider)) * 16) + 0.5 */
 
   USART_InitStruct.USART_WordLength=USART_WordLength_8b ;          /*!< Specifies the number of data bits transmitted or received in a frame.
-                                           This parameter can be a value of @ref USART_Word_Length */
+																																	This parameter can be a value of @ref USART_Word_Length */
 
   USART_InitStruct.USART_StopBits=USART_StopBits_1;            /*!< Specifies the number of stop bits transmitted.
-                                           This parameter can be a value of @ref USART_Stop_Bits */
+																															This parameter can be a value of @ref USART_Stop_Bits */
 
-  USART_InitStruct.USART_Parity=USART_HardwareFlowControl_None ;              /*!< Specifies the parity mode.
-                                           This parameter can be a value of @ref USART_Parity
-                                           @note When parity is enabled, the computed parity is inserted
-                                                 at the MSB position of the transmitted data (9th bit when
-                                                 the word length is set to 9 data bits; 8th bit when the
-                                                 word length is set to 8 data bits). */
+  USART_InitStruct.USART_Parity=USART_Parity_No;              /*!< Specifies the parity mode.
+																													This parameter can be a value of @ref USART_Parity
+																													@note When parity is enabled, the computed parity is inserted
+																												 at the MSB position of the transmitted data (9th bit when
+																												 the word length is set to 9 data bits; 8th bit when the
+																												 word length is set to 8 data bits). */
  
-  USART_InitStruct.USART_Mode=USART_Mode_Rx|USART_Mode_Tx;                /*!< Specifies wether the Receive or Transmit mode is enabled or disabled.
-                                           This parameter can be a value of @ref USART_Mode */
+  USART_InitStruct.USART_Mode=USART_Mode_Rx |USART_Mode_Tx ;                /*!< Specifies wether the Receive or Transmit mode is enabled or disabled.
+																																						This parameter can be a value of @ref USART_Mode */
 
-  USART_InitStruct.USART_HardwareFlowControl=USART_HardwareFlowControl_None ; /*!< Specifies wether the hardware flow control mode is enabled
-                                           or disabled.
-                                           This parameter can be a value of @ref USART_Hardware_Flow_Control */
+	USART_InitStruct.USART_HardwareFlowControl=USART_HardwareFlowControl_None; /*!< Specifies wether the hardware flow control mode is enabled
+																						 or disabled.
+																						 This parameter can be a value of @ref USART_Hardware_Flow_Control */
 	
-	USART_Init(USART1, &USART_InitStruct);
+	
+	USART_Init(USART1,&USART_InitStruct);
 	
 	USART_Cmd(USART1,  ENABLE);
-	
 }
 
 void UR_NVIC_config(){
