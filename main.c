@@ -27,6 +27,17 @@ void LED_config(void){
 
 } 
 
+void ddlay(uint32_t sec){
+
+	
+	while(sec){
+		int Z=9;
+		while(Z){
+			Z--;
+		}
+		sec--;
+	}
+}
 
 int main(void)
 { 
@@ -54,7 +65,7 @@ int main(void)
 	deQueue();
 	
   RED();
-//	delay(1000);
+	ddlay(2);
   enQueue(1);
   enQueue(2);
   enQueue(3);

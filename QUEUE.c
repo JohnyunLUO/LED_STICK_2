@@ -27,7 +27,7 @@ void enQueue(int element) {
         if (front == -1) front = 0;
         rear = (rear + 1) % SIZE;
         items[rear] = element;
-				UR_Print("\n\r Inserted ->");
+				UR_Print("\n\r Inserted -> ");
 			
 				//UR_Print(&items[rear]+0x30);
 				//USART_SendData(USART1,items[rear]+0x30);
@@ -55,7 +55,7 @@ int deQueue() {
         else {
             front = (front + 1) % SIZE;
         }
-        UR_Print("\r\n Deleted element ->"); 
+        UR_Print("\r\n Deleted element -> "); 
 				//UR_Print(&element);
 				USART_SendData(USART1,element+0x30);
 				UR_Print("\r\n");
@@ -70,7 +70,7 @@ void display() {
 				UR_Print(" \r\n Empty Queue\r\n"); 
         
     else {
-        UR_Print("\r\n Front ->");
+        UR_Print("\r\n Front -> ");
 				//UR_Print(&front);
 				USART_SendData(USART1,front+0x30);
 				//delay(1000);
@@ -86,7 +86,7 @@ void display() {
 				
         USART_SendData(USART1,items[i]+0x30);
 				
-				UR_Print("\r\n Rear ->");
+				UR_Print("\r\n Rear -> ");
 				//UR_Print(&rear);
         USART_SendData(USART1,rear+0x30);
     }
