@@ -419,6 +419,16 @@
               <FileType>5</FileType>
               <FilePath>.\QUEUE.h</FilePath>
             </File>
+            <File>
+              <FileName>Systicks.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Systicks.c</FilePath>
+            </File>
+            <File>
+              <FileName>Systicks.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Systicks.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

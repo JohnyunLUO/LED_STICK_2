@@ -4,11 +4,9 @@
 #include "LED.h"
 #include "USART.h"
 #include "QUEUE.h"
+//#include "Systicks.h"
 
-//#include ""
-
-
-void LED_config(){
+void LED_config(void){
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	
 	
@@ -29,48 +27,18 @@ void LED_config(){
 
 } 
 
-volatile uint32_t msTicks = 0;
 
-/**
- * @brief Interrupt handler function
- * 
- */
-void SysTick_Handler(void)
-{
-	msTicks++;
-}
-
-/**
- * @brief Add blocking delay
- *
- * @param ms delay in milliseconds
- */
-void delay(int ms)
-{
-	uint32_t expected_ticks = msTicks + ms;
-	while (msTicks < expected_ticks)
-	{
-		__asm("nop");
-	}
-}
-
-void Systicks_Init(){
-	int ret = SysTick_Config(SystemCoreClock / 1000);
-	if (ret < 0){
-		while (1);
-	}
-
-}
 int main(void)
 { 
   int k=1,l=1;
 	LED_config();
-	while(l);
+	
+	
 	UR_config();
 
-	UR_Print("12345");
+	UR_Print("12345\n\r");
 	
-	while(k);
+	//while(k);
 	/*Systicks_Init();
 	
 	while(1){
@@ -82,29 +50,37 @@ int main(void)
 	delay(1000);
 	}*/
 	// Fails because front = -1
-  deQueue();
-  GREEN();
+  while(l);
+	deQueue();
 	
+  RED();
+//	delay(1000);
   enQueue(1);
   enQueue(2);
   enQueue(3);
   enQueue(4);
   enQueue(5);
-
+	//delay(1000);
   // Fails to enqueue because front == 0 && rear == SIZE - 1
   enQueue(6);
-
+  
+	//delay(1000);
   display();
+	//delay(1000);
   deQueue();
-
+	
+	//delay(1000);
   display();
-
+	
+	//delay(1000);
   enQueue(7);
+	//delay(1000);
   display();
 
   // Fails to enqueue because front == rear + 1
   enQueue(8);
 	GREEN();
+	while(1);
   return 0;
  
 }
