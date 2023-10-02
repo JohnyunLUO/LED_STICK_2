@@ -4,7 +4,7 @@
 #include "LED.h"
 #include "USART.h"
 #include "QUEUE.h"
-//#include "Systicks.h"
+#include "Systicks.h"
 
 void LED_config(void){
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
@@ -45,13 +45,13 @@ void ddlay(uint32_t sec){
 int main(void)
 {
 	LED_config();
-	
+	Systicks_Init();
 	
 	UR_config();
 
 	//UR_Print("12345\n\r");
 	
-	//while(k);
+	//
 	/*Systicks_Init();
 	
 	while(1){
@@ -63,11 +63,11 @@ int main(void)
 	delay(1000);
 	}*/
 	//deQueue();
-	
+	while(k);
 	while(1){
 		
 	RED();
-	ddlay(0xFFFF);	
+	delay(1000);	
 	
 	// Fails because front = -1
   
