@@ -11,11 +11,10 @@ Section Cross References
     main.o(.ARM.exidx.text.ddlay) refers to main.o(.text.ddlay) for [Anonymous Symbol]
     main.o(.text.main) refers to main.o(.text.LED_config) for LED_config
     main.o(.text.main) refers to usart.o(.text.UR_config) for UR_config
-    main.o(.text.main) refers to main.o(.rodata.str1.1) for .L.str
-    main.o(.text.main) refers to usart.o(.text.UR_Print) for UR_Print
-    main.o(.text.main) refers to queue.o(.text.deQueue) for deQueue
     main.o(.text.main) refers to led.o(.text.RED) for RED
     main.o(.text.main) refers to main.o(.text.ddlay) for ddlay
+    main.o(.text.main) refers to main.o(.data.a) for a
+    main.o(.text.main) refers to queue.o(.text.deQueue) for deQueue
     main.o(.text.main) refers to queue.o(.text.enQueue) for enQueue
     main.o(.text.main) refers to queue.o(.text.display) for display
     main.o(.text.main) refers to led.o(.text.GREEN) for GREEN
@@ -62,6 +61,8 @@ Section Cross References
     usart.o(.text.UR_config) refers to stm32f10x_rcc.o(.text.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
     usart.o(.text.UR_config) refers to stm32f10x_gpio.o(.text.GPIO_Init) for GPIO_Init
     usart.o(.text.UR_config) refers to stm32f10x_usart.o(.text.USART_Init) for USART_Init
+    usart.o(.text.UR_config) refers to stm32f10x_usart.o(.text.USART_ClearITPendingBit) for USART_ClearITPendingBit
+    usart.o(.text.UR_config) refers to stm32f10x_usart.o(.text.USART_ClearFlag) for USART_ClearFlag
     usart.o(.text.UR_config) refers to stm32f10x_usart.o(.text.USART_Cmd) for USART_Cmd
     usart.o(.ARM.exidx.text.UR_config) refers to usart.o(.text.UR_config) for [Anonymous Symbol]
     usart.o(.text.UR_NVIC_config) refers to misc.o(.text.NVIC_Init) for NVIC_Init
@@ -283,6 +284,8 @@ Removing Unused input sections from the image.
     Removing main.o(.ARM.exidx.text.LED_config), (8 bytes).
     Removing main.o(.ARM.exidx.text.ddlay), (8 bytes).
     Removing main.o(.ARM.exidx.text.main), (8 bytes).
+    Removing main.o(.data.k), (4 bytes).
+    Removing main.o(.data.l), (4 bytes).
     Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing led.o(.text), (0 bytes).
     Removing led.o(.ARM.exidx.text.GREEN), (8 bytes).
@@ -469,11 +472,9 @@ Removing Unused input sections from the image.
     Removing stm32f10x_usart.o(.text.USART_IrDACmd), (44 bytes).
     Removing stm32f10x_usart.o(.ARM.exidx.text.USART_IrDACmd), (8 bytes).
     Removing stm32f10x_usart.o(.ARM.exidx.text.USART_GetFlagStatus), (8 bytes).
-    Removing stm32f10x_usart.o(.text.USART_ClearFlag), (36 bytes).
     Removing stm32f10x_usart.o(.ARM.exidx.text.USART_ClearFlag), (8 bytes).
     Removing stm32f10x_usart.o(.text.USART_GetITStatus), (176 bytes).
     Removing stm32f10x_usart.o(.ARM.exidx.text.USART_GetITStatus), (8 bytes).
-    Removing stm32f10x_usart.o(.text.USART_ClearITPendingBit), (68 bytes).
     Removing stm32f10x_usart.o(.ARM.exidx.text.USART_ClearITPendingBit), (8 bytes).
     Removing gpio_stm32f10x.o(.text), (0 bytes).
     Removing gpio_stm32f10x.o(.text.GPIO_PortClock), (528 bytes).
@@ -494,7 +495,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f10x.o(.data.SystemCoreClock), (4 bytes).
     Removing system_stm32f10x.o(.rodata.AHBPrescTable), (16 bytes).
 
-214 unused section(s) (total 7672 bytes) removed from the image.
+214 unused section(s) (total 7576 bytes) removed from the image.
 
 ==============================================================================
 
@@ -593,49 +594,49 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08000be0   Section        0  system_stm32f10x.o(.text.SystemInit)
     [Anonymous Symbol]                       0x08000c48   Section        0  usart.o(.text.UR_Print)
     [Anonymous Symbol]                       0x08000c8c   Section        0  usart.o(.text.UR_config)
-    [Anonymous Symbol]                       0x08000d1c   Section        0  stm32f10x_usart.o(.text.USART_Cmd)
-    [Anonymous Symbol]                       0x08000d48   Section        0  stm32f10x_usart.o(.text.USART_GetFlagStatus)
-    [Anonymous Symbol]                       0x08000d8c   Section        0  stm32f10x_usart.o(.text.USART_Init)
-    [Anonymous Symbol]                       0x08000ee8   Section        0  stm32f10x_usart.o(.text.USART_SendData)
-    [Anonymous Symbol]                       0x08000f00   Section        0  main.o(.text.ddlay)
-    [Anonymous Symbol]                       0x08000f2c   Section        0  queue.o(.text.deQueue)
-    [Anonymous Symbol]                       0x08000ff4   Section        0  queue.o(.text.display)
-    [Anonymous Symbol]                       0x080010f4   Section        0  queue.o(.text.enQueue)
-    [Anonymous Symbol]                       0x08001194   Section        0  queue.o(.text.isEmpty)
-    [Anonymous Symbol]                       0x080011b8   Section        0  queue.o(.text.isFull)
-    [Anonymous Symbol]                       0x08001208   Section        0  main.o(.text.main)
-    i.__0sprintf                             0x0800128c   Section        0  printfa.o(i.__0sprintf)
-    i.__scatterload_copy                     0x080012b4   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x080012c2   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x080012c4   Section       14  handlers.o(i.__scatterload_zeroinit)
-    _fp_digits                               0x080012d5   Thumb Code   366  printfa.o(i._fp_digits)
-    i._fp_digits                             0x080012d4   Section        0  printfa.o(i._fp_digits)
-    _printf_core                             0x08001459   Thumb Code  1744  printfa.o(i._printf_core)
-    i._printf_core                           0x08001458   Section        0  printfa.o(i._printf_core)
-    _printf_post_padding                     0x08001b35   Thumb Code    36  printfa.o(i._printf_post_padding)
-    i._printf_post_padding                   0x08001b34   Section        0  printfa.o(i._printf_post_padding)
-    _printf_pre_padding                      0x08001b59   Thumb Code    46  printfa.o(i._printf_pre_padding)
-    i._printf_pre_padding                    0x08001b58   Section        0  printfa.o(i._printf_pre_padding)
-    _sputc                                   0x08001b87   Thumb Code    10  printfa.o(i._sputc)
-    i._sputc                                 0x08001b86   Section        0  printfa.o(i._sputc)
-    ADCPrescTable                            0x08001b90   Data           4  stm32f10x_rcc.o(.rodata.ADCPrescTable)
-    [Anonymous Symbol]                       0x08001b90   Section        0  stm32f10x_rcc.o(.rodata.ADCPrescTable)
-    APBAHBPrescTable                         0x08001b94   Data          16  stm32f10x_rcc.o(.rodata.APBAHBPrescTable)
-    [Anonymous Symbol]                       0x08001b94   Section        0  stm32f10x_rcc.o(.rodata.APBAHBPrescTable)
-    .L.str                                   0x08001ba4   Data           8  main.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08001ba4   Section        0  main.o(.rodata.str1.1)
-    .L.str.6                                 0x08001bac   Data          18  queue.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x08001bac   Section        0  queue.o(.rodata.str1.1)
-    .L.str.5                                 0x08001bbb   Data           3  queue.o(.rodata.str1.1)
-    .L.str.3                                 0x08001bbe   Data          24  queue.o(.rodata.str1.1)
-    .L.str                                   0x08001bd6   Data          22  queue.o(.rodata.str1.1)
-    .L.str.1                                 0x08001bec   Data          16  queue.o(.rodata.str1.1)
-    .L.str.9                                 0x08001bfc   Data          12  queue.o(.rodata.str1.1)
-    .L.str.8                                 0x08001c08   Data          13  queue.o(.rodata.str1.1)
-    .L.str.4                                 0x08001c15   Data          23  queue.o(.rodata.str1.1)
-    .L.str.7                                 0x08001c2c   Data          13  queue.o(.rodata.str1.1)
-    .L.str.2                                 0x08001c39   Data           3  queue.o(.rodata.str1.1)
-    STACK                                    0x20000018   Section     1024  startup_stm32f10x_hd.o(STACK)
+    [Anonymous Symbol]                       0x08000d30   Section        0  stm32f10x_usart.o(.text.USART_ClearFlag)
+    [Anonymous Symbol]                       0x08000d54   Section        0  stm32f10x_usart.o(.text.USART_ClearITPendingBit)
+    [Anonymous Symbol]                       0x08000d98   Section        0  stm32f10x_usart.o(.text.USART_Cmd)
+    [Anonymous Symbol]                       0x08000dc4   Section        0  stm32f10x_usart.o(.text.USART_GetFlagStatus)
+    [Anonymous Symbol]                       0x08000e08   Section        0  stm32f10x_usart.o(.text.USART_Init)
+    [Anonymous Symbol]                       0x08000f64   Section        0  stm32f10x_usart.o(.text.USART_SendData)
+    [Anonymous Symbol]                       0x08000f7c   Section        0  main.o(.text.ddlay)
+    [Anonymous Symbol]                       0x08000fa8   Section        0  queue.o(.text.deQueue)
+    [Anonymous Symbol]                       0x08001070   Section        0  queue.o(.text.display)
+    [Anonymous Symbol]                       0x08001170   Section        0  queue.o(.text.enQueue)
+    [Anonymous Symbol]                       0x08001210   Section        0  queue.o(.text.isEmpty)
+    [Anonymous Symbol]                       0x08001234   Section        0  queue.o(.text.isFull)
+    [Anonymous Symbol]                       0x08001284   Section        0  main.o(.text.main)
+    i.__0sprintf                             0x080013a8   Section        0  printfa.o(i.__0sprintf)
+    i.__scatterload_copy                     0x080013d0   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x080013de   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x080013e0   Section       14  handlers.o(i.__scatterload_zeroinit)
+    _fp_digits                               0x080013f1   Thumb Code   366  printfa.o(i._fp_digits)
+    i._fp_digits                             0x080013f0   Section        0  printfa.o(i._fp_digits)
+    _printf_core                             0x08001575   Thumb Code  1744  printfa.o(i._printf_core)
+    i._printf_core                           0x08001574   Section        0  printfa.o(i._printf_core)
+    _printf_post_padding                     0x08001c51   Thumb Code    36  printfa.o(i._printf_post_padding)
+    i._printf_post_padding                   0x08001c50   Section        0  printfa.o(i._printf_post_padding)
+    _printf_pre_padding                      0x08001c75   Thumb Code    46  printfa.o(i._printf_pre_padding)
+    i._printf_pre_padding                    0x08001c74   Section        0  printfa.o(i._printf_pre_padding)
+    _sputc                                   0x08001ca3   Thumb Code    10  printfa.o(i._sputc)
+    i._sputc                                 0x08001ca2   Section        0  printfa.o(i._sputc)
+    ADCPrescTable                            0x08001cac   Data           4  stm32f10x_rcc.o(.rodata.ADCPrescTable)
+    [Anonymous Symbol]                       0x08001cac   Section        0  stm32f10x_rcc.o(.rodata.ADCPrescTable)
+    APBAHBPrescTable                         0x08001cb0   Data          16  stm32f10x_rcc.o(.rodata.APBAHBPrescTable)
+    [Anonymous Symbol]                       0x08001cb0   Section        0  stm32f10x_rcc.o(.rodata.APBAHBPrescTable)
+    .L.str.6                                 0x08001cc0   Data          18  queue.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08001cc0   Section        0  queue.o(.rodata.str1.1)
+    .L.str.5                                 0x08001ccf   Data           3  queue.o(.rodata.str1.1)
+    .L.str.3                                 0x08001cd2   Data          24  queue.o(.rodata.str1.1)
+    .L.str                                   0x08001cea   Data          22  queue.o(.rodata.str1.1)
+    .L.str.9                                 0x08001d00   Data          13  queue.o(.rodata.str1.1)
+    .L.str.4                                 0x08001d0d   Data          24  queue.o(.rodata.str1.1)
+    .L.str.7                                 0x08001d25   Data          14  queue.o(.rodata.str1.1)
+    .L.str.1                                 0x08001d33   Data          16  queue.o(.rodata.str1.1)
+    .L.str.8                                 0x08001d43   Data          13  queue.o(.rodata.str1.1)
+    .L.str.2                                 0x08001d50   Data           3  queue.o(.rodata.str1.1)
+    STACK                                    0x20000020   Section     1024  startup_stm32f10x_hd.o(STACK)
 
     Global Symbols
 
@@ -761,33 +762,36 @@ Image Symbol Table
     SysTick_Handler                          0x08000bd1   Thumb Code    16  systicks.o(.text.SysTick_Handler)
     SystemInit                               0x08000be1   Thumb Code   102  system_stm32f10x.o(.text.SystemInit)
     UR_Print                                 0x08000c49   Thumb Code    66  usart.o(.text.UR_Print)
-    UR_config                                0x08000c8d   Thumb Code   144  usart.o(.text.UR_config)
-    USART_Cmd                                0x08000d1d   Thumb Code    44  stm32f10x_usart.o(.text.USART_Cmd)
-    USART_GetFlagStatus                      0x08000d49   Thumb Code    68  stm32f10x_usart.o(.text.USART_GetFlagStatus)
-    USART_Init                               0x08000d8d   Thumb Code   348  stm32f10x_usart.o(.text.USART_Init)
-    USART_SendData                           0x08000ee9   Thumb Code    24  stm32f10x_usart.o(.text.USART_SendData)
-    ddlay                                    0x08000f01   Thumb Code    44  main.o(.text.ddlay)
-    deQueue                                  0x08000f2d   Thumb Code   198  queue.o(.text.deQueue)
-    display                                  0x08000ff5   Thumb Code   256  queue.o(.text.display)
-    enQueue                                  0x080010f5   Thumb Code   160  queue.o(.text.enQueue)
-    isEmpty                                  0x08001195   Thumb Code    36  queue.o(.text.isEmpty)
-    isFull                                   0x080011b9   Thumb Code    78  queue.o(.text.isFull)
-    main                                     0x08001209   Thumb Code   132  main.o(.text.main)
-    __0sprintf                               0x0800128d   Thumb Code    34  printfa.o(i.__0sprintf)
-    __1sprintf                               0x0800128d   Thumb Code     0  printfa.o(i.__0sprintf)
-    __2sprintf                               0x0800128d   Thumb Code     0  printfa.o(i.__0sprintf)
-    __c89sprintf                             0x0800128d   Thumb Code     0  printfa.o(i.__0sprintf)
-    sprintf                                  0x0800128d   Thumb Code     0  printfa.o(i.__0sprintf)
-    __scatterload_copy                       0x080012b5   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x080012c3   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x080012c5   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    Region$$Table$$Base                      0x08001c3c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001c5c   Number         0  anon$$obj.o(Region$$Table)
-    front                                    0x20000000   Data           4  queue.o(.data.front)
-    rear                                     0x20000004   Data           4  queue.o(.data.rear)
-    items                                    0x20000008   Data           5  queue.o(.bss.items)
-    msTicks                                  0x20000010   Data           4  systicks.o(.bss.msTicks)
-    __initial_sp                             0x20000418   Data           0  startup_stm32f10x_hd.o(STACK)
+    UR_config                                0x08000c8d   Thumb Code   162  usart.o(.text.UR_config)
+    USART_ClearFlag                          0x08000d31   Thumb Code    36  stm32f10x_usart.o(.text.USART_ClearFlag)
+    USART_ClearITPendingBit                  0x08000d55   Thumb Code    68  stm32f10x_usart.o(.text.USART_ClearITPendingBit)
+    USART_Cmd                                0x08000d99   Thumb Code    44  stm32f10x_usart.o(.text.USART_Cmd)
+    USART_GetFlagStatus                      0x08000dc5   Thumb Code    68  stm32f10x_usart.o(.text.USART_GetFlagStatus)
+    USART_Init                               0x08000e09   Thumb Code   348  stm32f10x_usart.o(.text.USART_Init)
+    USART_SendData                           0x08000f65   Thumb Code    24  stm32f10x_usart.o(.text.USART_SendData)
+    ddlay                                    0x08000f7d   Thumb Code    44  main.o(.text.ddlay)
+    deQueue                                  0x08000fa9   Thumb Code   198  queue.o(.text.deQueue)
+    display                                  0x08001071   Thumb Code   256  queue.o(.text.display)
+    enQueue                                  0x08001171   Thumb Code   160  queue.o(.text.enQueue)
+    isEmpty                                  0x08001211   Thumb Code    36  queue.o(.text.isEmpty)
+    isFull                                   0x08001235   Thumb Code    78  queue.o(.text.isFull)
+    main                                     0x08001285   Thumb Code   292  main.o(.text.main)
+    __0sprintf                               0x080013a9   Thumb Code    34  printfa.o(i.__0sprintf)
+    __1sprintf                               0x080013a9   Thumb Code     0  printfa.o(i.__0sprintf)
+    __2sprintf                               0x080013a9   Thumb Code     0  printfa.o(i.__0sprintf)
+    __c89sprintf                             0x080013a9   Thumb Code     0  printfa.o(i.__0sprintf)
+    sprintf                                  0x080013a9   Thumb Code     0  printfa.o(i.__0sprintf)
+    __scatterload_copy                       0x080013d1   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x080013df   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x080013e1   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    Region$$Table$$Base                      0x08001d54   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001d74   Number         0  anon$$obj.o(Region$$Table)
+    a                                        0x20000000   Data           4  main.o(.data.a)
+    front                                    0x20000004   Data           4  queue.o(.data.front)
+    rear                                     0x20000008   Data           4  queue.o(.data.rear)
+    items                                    0x20000010   Data           5  queue.o(.bss.items)
+    msTicks                                  0x20000018   Data           4  systicks.o(.bss.msTicks)
+    __initial_sp                             0x20000420   Data           0  startup_stm32f10x_hd.o(STACK)
 
 
 
@@ -797,105 +801,109 @@ Memory Map of the image
 
   Image Entry point : 0x08000145
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00001c64, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00001d80, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001c5c, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001d74, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x00000130   Data   RO          299    RESET               startup_stm32f10x_hd.o
-    0x08000130   0x08000130   0x00000000   Code   RO          323  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000130   0x08000130   0x00000004   Code   RO          354    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x08000134   0x08000134   0x00000004   Code   RO          357    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000138   0x08000138   0x00000000   Code   RO          359    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000138   0x08000138   0x00000000   Code   RO          361    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000138   0x08000138   0x00000008   Code   RO          362    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000140   0x08000140   0x00000000   Code   RO          364    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000140   0x08000140   0x00000000   Code   RO          366    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000140   0x08000140   0x00000004   Code   RO          355    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x08000144   0x08000144   0x00000024   Code   RO          300  * .text               startup_stm32f10x_hd.o
-    0x08000168   0x08000168   0x0000002c   Code   RO          382    .text               mc_w.l(uidiv.o)
-    0x08000194   0x08000194   0x00000062   Code   RO          384    .text               mc_w.l(uldiv.o)
-    0x080001f6   0x080001f6   0x00000000   Code   RO          386    .text               mc_w.l(iusefp.o)
-    0x080001f6   0x080001f6   0x0000014e   Code   RO          387    .text               mf_w.l(dadd.o)
-    0x08000344   0x08000344   0x000000e4   Code   RO          389    .text               mf_w.l(dmul.o)
-    0x08000428   0x08000428   0x000000de   Code   RO          391    .text               mf_w.l(ddiv.o)
-    0x08000506   0x08000506   0x00000030   Code   RO          393    .text               mf_w.l(dfixul.o)
+    0x08000000   0x08000000   0x00000130   Data   RO          301    RESET               startup_stm32f10x_hd.o
+    0x08000130   0x08000130   0x00000000   Code   RO          325  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000130   0x08000130   0x00000004   Code   RO          356    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x08000134   0x08000134   0x00000004   Code   RO          359    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000138   0x08000138   0x00000000   Code   RO          361    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000138   0x08000138   0x00000000   Code   RO          363    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000138   0x08000138   0x00000008   Code   RO          364    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO          366    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO          368    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000140   0x08000140   0x00000004   Code   RO          357    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000144   0x08000144   0x00000024   Code   RO          302  * .text               startup_stm32f10x_hd.o
+    0x08000168   0x08000168   0x0000002c   Code   RO          384    .text               mc_w.l(uidiv.o)
+    0x08000194   0x08000194   0x00000062   Code   RO          386    .text               mc_w.l(uldiv.o)
+    0x080001f6   0x080001f6   0x00000000   Code   RO          388    .text               mc_w.l(iusefp.o)
+    0x080001f6   0x080001f6   0x0000014e   Code   RO          389    .text               mf_w.l(dadd.o)
+    0x08000344   0x08000344   0x000000e4   Code   RO          391    .text               mf_w.l(dmul.o)
+    0x08000428   0x08000428   0x000000de   Code   RO          393    .text               mf_w.l(ddiv.o)
+    0x08000506   0x08000506   0x00000030   Code   RO          395    .text               mf_w.l(dfixul.o)
     0x08000536   0x08000536   0x00000002   PAD
-    0x08000538   0x08000538   0x00000030   Code   RO          395    .text               mf_w.l(cdrcmple.o)
-    0x08000568   0x08000568   0x00000024   Code   RO          397    .text               mc_w.l(init.o)
-    0x0800058c   0x0800058c   0x0000001e   Code   RO          400    .text               mc_w.l(llshl.o)
-    0x080005aa   0x080005aa   0x00000020   Code   RO          402    .text               mc_w.l(llushr.o)
-    0x080005ca   0x080005ca   0x00000024   Code   RO          404    .text               mc_w.l(llsshr.o)
-    0x080005ee   0x080005ee   0x000000ba   Code   RO          407    .text               mf_w.l(depilogue.o)
-    0x080006a8   0x080006a8   0x00000186   Code   RO          106    .text.GPIO_Init     stm32f10x_gpio.o
+    0x08000538   0x08000538   0x00000030   Code   RO          397    .text               mf_w.l(cdrcmple.o)
+    0x08000568   0x08000568   0x00000024   Code   RO          399    .text               mc_w.l(init.o)
+    0x0800058c   0x0800058c   0x0000001e   Code   RO          402    .text               mc_w.l(llshl.o)
+    0x080005aa   0x080005aa   0x00000020   Code   RO          404    .text               mc_w.l(llushr.o)
+    0x080005ca   0x080005ca   0x00000024   Code   RO          406    .text               mc_w.l(llsshr.o)
+    0x080005ee   0x080005ee   0x000000ba   Code   RO          409    .text               mf_w.l(depilogue.o)
+    0x080006a8   0x080006a8   0x00000186   Code   RO          108    .text.GPIO_Init     stm32f10x_gpio.o
     0x0800082e   0x0800082e   0x00000002   PAD
-    0x08000830   0x08000830   0x00000014   Code   RO          120    .text.GPIO_ResetBits  stm32f10x_gpio.o
-    0x08000844   0x08000844   0x00000014   Code   RO          118    .text.GPIO_SetBits  stm32f10x_gpio.o
-    0x08000858   0x08000858   0x00000014   Code   RO          124    .text.GPIO_Write    stm32f10x_gpio.o
-    0x0800086c   0x0800086c   0x00000028   Code   RO           17    .text.GREEN         led.o
+    0x08000830   0x08000830   0x00000014   Code   RO          122    .text.GPIO_ResetBits  stm32f10x_gpio.o
+    0x08000844   0x08000844   0x00000014   Code   RO          120    .text.GPIO_SetBits  stm32f10x_gpio.o
+    0x08000858   0x08000858   0x00000014   Code   RO          126    .text.GPIO_Write    stm32f10x_gpio.o
+    0x0800086c   0x0800086c   0x00000028   Code   RO           19    .text.GREEN         led.o
     0x08000894   0x08000894   0x0000003a   Code   RO            2    .text.LED_config    main.o
     0x080008ce   0x080008ce   0x00000002   PAD
-    0x080008d0   0x080008d0   0x00000038   Code   RO          189    .text.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
-    0x08000908   0x08000908   0x00000172   Code   RO          185    .text.RCC_GetClocksFreq  stm32f10x_rcc.o
+    0x080008d0   0x080008d0   0x00000038   Code   RO          191    .text.RCC_APB2PeriphClockCmd  stm32f10x_rcc.o
+    0x08000908   0x08000908   0x00000172   Code   RO          187    .text.RCC_GetClocksFreq  stm32f10x_rcc.o
     0x08000a7a   0x08000a7a   0x00000002   PAD
-    0x08000a7c   0x08000a7c   0x00000028   Code   RO           21    .text.RED           led.o
-    0x08000aa4   0x08000aa4   0x00000008   Code   RO          309    .text.SetSysClock   system_stm32f10x.o
-    0x08000aac   0x08000aac   0x00000122   Code   RO          313    .text.SetSysClockTo72  system_stm32f10x.o
+    0x08000a7c   0x08000a7c   0x00000028   Code   RO           23    .text.RED           led.o
+    0x08000aa4   0x08000aa4   0x00000008   Code   RO          311    .text.SetSysClock   system_stm32f10x.o
+    0x08000aac   0x08000aac   0x00000122   Code   RO          315    .text.SetSysClockTo72  system_stm32f10x.o
     0x08000bce   0x08000bce   0x00000002   PAD
-    0x08000bd0   0x08000bd0   0x00000010   Code   RO           67    .text.SysTick_Handler  systicks.o
-    0x08000be0   0x08000be0   0x00000066   Code   RO          307    .text.SystemInit    system_stm32f10x.o
+    0x08000bd0   0x08000bd0   0x00000010   Code   RO           69    .text.SysTick_Handler  systicks.o
+    0x08000be0   0x08000be0   0x00000066   Code   RO          309    .text.SystemInit    system_stm32f10x.o
     0x08000c46   0x08000c46   0x00000002   PAD
-    0x08000c48   0x08000c48   0x00000042   Code   RO           55    .text.UR_Print      usart.o
+    0x08000c48   0x08000c48   0x00000042   Code   RO           57    .text.UR_Print      usart.o
     0x08000c8a   0x08000c8a   0x00000002   PAD
-    0x08000c8c   0x08000c8c   0x00000090   Code   RO           51    .text.UR_config     usart.o
-    0x08000d1c   0x08000d1c   0x0000002c   Code   RO          228    .text.USART_Cmd     stm32f10x_usart.o
-    0x08000d48   0x08000d48   0x00000044   Code   RO          268    .text.USART_GetFlagStatus  stm32f10x_usart.o
-    0x08000d8c   0x08000d8c   0x0000015c   Code   RO          220    .text.USART_Init    stm32f10x_usart.o
-    0x08000ee8   0x08000ee8   0x00000018   Code   RO          244    .text.USART_SendData  stm32f10x_usart.o
-    0x08000f00   0x08000f00   0x0000002c   Code   RO            4    .text.ddlay         main.o
-    0x08000f2c   0x08000f2c   0x000000c6   Code   RO           36    .text.deQueue       queue.o
-    0x08000ff2   0x08000ff2   0x00000002   PAD
-    0x08000ff4   0x08000ff4   0x00000100   Code   RO           38    .text.display       queue.o
-    0x080010f4   0x080010f4   0x000000a0   Code   RO           34    .text.enQueue       queue.o
-    0x08001194   0x08001194   0x00000024   Code   RO           32    .text.isEmpty       queue.o
-    0x080011b8   0x080011b8   0x0000004e   Code   RO           30    .text.isFull        queue.o
-    0x08001206   0x08001206   0x00000002   PAD
-    0x08001208   0x08001208   0x00000084   Code   RO            6    .text.main          main.o
-    0x0800128c   0x0800128c   0x00000028   Code   RO          329    i.__0sprintf        mc_w.l(printfa.o)
-    0x080012b4   0x080012b4   0x0000000e   Code   RO          411    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x080012c2   0x080012c2   0x00000002   Code   RO          412    i.__scatterload_null  mc_w.l(handlers.o)
-    0x080012c4   0x080012c4   0x0000000e   Code   RO          413    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x080012d2   0x080012d2   0x00000002   PAD
-    0x080012d4   0x080012d4   0x00000184   Code   RO          334    i._fp_digits        mc_w.l(printfa.o)
-    0x08001458   0x08001458   0x000006dc   Code   RO          335    i._printf_core      mc_w.l(printfa.o)
-    0x08001b34   0x08001b34   0x00000024   Code   RO          336    i._printf_post_padding  mc_w.l(printfa.o)
-    0x08001b58   0x08001b58   0x0000002e   Code   RO          337    i._printf_pre_padding  mc_w.l(printfa.o)
-    0x08001b86   0x08001b86   0x0000000a   Code   RO          339    i._sputc            mc_w.l(printfa.o)
-    0x08001b90   0x08001b90   0x00000004   Data   RO          210    .rodata.ADCPrescTable  stm32f10x_rcc.o
-    0x08001b94   0x08001b94   0x00000010   Data   RO          209    .rodata.APBAHBPrescTable  stm32f10x_rcc.o
-    0x08001ba4   0x08001ba4   0x00000008   Data   RO            8    .rodata.str1.1      main.o
-    0x08001bac   0x08001bac   0x00000090   Data   RO           42    .rodata.str1.1      queue.o
-    0x08001c3c   0x08001c3c   0x00000020   Data   RO          410    Region$$Table       anon$$obj.o
+    0x08000c8c   0x08000c8c   0x000000a2   Code   RO           53    .text.UR_config     usart.o
+    0x08000d2e   0x08000d2e   0x00000002   PAD
+    0x08000d30   0x08000d30   0x00000024   Code   RO          272    .text.USART_ClearFlag  stm32f10x_usart.o
+    0x08000d54   0x08000d54   0x00000044   Code   RO          276    .text.USART_ClearITPendingBit  stm32f10x_usart.o
+    0x08000d98   0x08000d98   0x0000002c   Code   RO          230    .text.USART_Cmd     stm32f10x_usart.o
+    0x08000dc4   0x08000dc4   0x00000044   Code   RO          270    .text.USART_GetFlagStatus  stm32f10x_usart.o
+    0x08000e08   0x08000e08   0x0000015c   Code   RO          222    .text.USART_Init    stm32f10x_usart.o
+    0x08000f64   0x08000f64   0x00000018   Code   RO          246    .text.USART_SendData  stm32f10x_usart.o
+    0x08000f7c   0x08000f7c   0x0000002c   Code   RO            4    .text.ddlay         main.o
+    0x08000fa8   0x08000fa8   0x000000c6   Code   RO           38    .text.deQueue       queue.o
+    0x0800106e   0x0800106e   0x00000002   PAD
+    0x08001070   0x08001070   0x00000100   Code   RO           40    .text.display       queue.o
+    0x08001170   0x08001170   0x000000a0   Code   RO           36    .text.enQueue       queue.o
+    0x08001210   0x08001210   0x00000024   Code   RO           34    .text.isEmpty       queue.o
+    0x08001234   0x08001234   0x0000004e   Code   RO           32    .text.isFull        queue.o
+    0x08001282   0x08001282   0x00000002   PAD
+    0x08001284   0x08001284   0x00000124   Code   RO            6    .text.main          main.o
+    0x080013a8   0x080013a8   0x00000028   Code   RO          331    i.__0sprintf        mc_w.l(printfa.o)
+    0x080013d0   0x080013d0   0x0000000e   Code   RO          413    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x080013de   0x080013de   0x00000002   Code   RO          414    i.__scatterload_null  mc_w.l(handlers.o)
+    0x080013e0   0x080013e0   0x0000000e   Code   RO          415    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x080013ee   0x080013ee   0x00000002   PAD
+    0x080013f0   0x080013f0   0x00000184   Code   RO          336    i._fp_digits        mc_w.l(printfa.o)
+    0x08001574   0x08001574   0x000006dc   Code   RO          337    i._printf_core      mc_w.l(printfa.o)
+    0x08001c50   0x08001c50   0x00000024   Code   RO          338    i._printf_post_padding  mc_w.l(printfa.o)
+    0x08001c74   0x08001c74   0x0000002e   Code   RO          339    i._printf_pre_padding  mc_w.l(printfa.o)
+    0x08001ca2   0x08001ca2   0x0000000a   Code   RO          341    i._sputc            mc_w.l(printfa.o)
+    0x08001cac   0x08001cac   0x00000004   Data   RO          212    .rodata.ADCPrescTable  stm32f10x_rcc.o
+    0x08001cb0   0x08001cb0   0x00000010   Data   RO          211    .rodata.APBAHBPrescTable  stm32f10x_rcc.o
+    0x08001cc0   0x08001cc0   0x00000093   Data   RO           44    .rodata.str1.1      queue.o
+    0x08001d53   0x08001d53   0x00000001   PAD
+    0x08001d54   0x08001d54   0x00000020   Data   RO          412    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001c5c, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   0x08001c5c   0x00000004   Data   RW           40    .data.front         queue.o
-    0x20000004   0x08001c60   0x00000004   Data   RW           41    .data.rear          queue.o
-
-
-    Execution Region ER_ZI (Exec base: 0x20000008, Load base: 0x08001c64, Size: 0x00000410, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001d74, Size: 0x0000000c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000008        -       0x00000005   Zero   RW           43    .bss.items          queue.o
-    0x2000000d   0x08001c64   0x00000003   PAD
-    0x20000010        -       0x00000004   Zero   RW           77    .bss.msTicks        systicks.o
-    0x20000014   0x08001c64   0x00000004   PAD
-    0x20000018        -       0x00000400   Zero   RW          297    STACK               startup_stm32f10x_hd.o
+    0x20000000   0x08001d74   0x00000004   Data   RW            8    .data.a             main.o
+    0x20000004   0x08001d78   0x00000004   Data   RW           42    .data.front         queue.o
+    0x20000008   0x08001d7c   0x00000004   Data   RW           43    .data.rear          queue.o
+
+
+    Execution Region ER_ZI (Exec base: 0x20000010, Load base: 0x08001d80, Size: 0x00000410, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000010        -       0x00000005   Zero   RW           45    .bss.items          queue.o
+    0x20000015   0x08001d80   0x00000003   PAD
+    0x20000018        -       0x00000004   Zero   RW           79    .bss.msTicks        systicks.o
+    0x2000001c   0x08001d80   0x00000004   PAD
+    0x20000020        -       0x00000400   Zero   RW          299    STACK               startup_stm32f10x_hd.o
 
 
 ==============================================================================
@@ -906,20 +914,20 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
         80          0          0          0          0        974   led.o
-       234          0          8          0          0       2006   main.o
-       728          0        144          8          5       2186   queue.o
+       394          0          0          4          0       1997   main.o
+       728          0        147          8          5       2174   queue.o
         36          8        304          0       1024        828   startup_stm32f10x_hd.o
        450          0          0          0          0       5684   stm32f10x_gpio.o
        426          0         20          0          0       7003   stm32f10x_rcc.o
-       484          0          0          0          0       7476   stm32f10x_usart.o
+       588          0          0          0          0       7476   stm32f10x_usart.o
        400          0          0          0          0       2859   system_stm32f10x.o
         16          0          0          0          4       4024   systicks.o
-       210          0          0          0          0       4393   usart.o
+       228          0          0          0          0       4395   usart.o
 
     ----------------------------------------------------------------------
-      3080          8        508          8       1040      37433   Object Totals
+      3364          8        504         12       1040      37414   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        16          0          0          0          7          0   (incl. Padding)
+        18          0          1          0          7          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -970,15 +978,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      6752        110        508          8       1040      38213   Grand Totals
-      6752        110        508          8       1040      38213   ELF Image Totals
-      6752        110        508          8          0          0   ROM Totals
+      7036        110        504         12       1040      38194   Grand Totals
+      7036        110        504         12       1040      38194   ELF Image Totals
+      7036        110        504         12          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 7260 (   7.09kB)
-    Total RW  Size (RW Data + ZI Data)              1048 (   1.02kB)
-    Total ROM Size (Code + RO Data + RW Data)       7268 (   7.10kB)
+    Total RO  Size (Code + RO Data)                 7540 (   7.36kB)
+    Total RW  Size (RW Data + ZI Data)              1052 (   1.03kB)
+    Total ROM Size (Code + RO Data + RW Data)       7552 (   7.38kB)
 
 ==============================================================================
 

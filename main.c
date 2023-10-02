@@ -38,16 +38,18 @@ void ddlay(uint32_t sec){
 		sec--;
 	}
 }
+  
+  int a=1;
+  int k=1,l=1;
 
 int main(void)
-{ 
-  int k=1,l=1;
+{
 	LED_config();
 	
 	
 	UR_config();
 
-	UR_Print("12345\n\r");
+	//UR_Print("12345\n\r");
 	
 	//while(k);
 	/*Systicks_Init();
@@ -60,37 +62,71 @@ int main(void)
 	BLUE();
 	delay(1000);
 	}*/
-	// Fails because front = -1
-  while(l);
-	deQueue();
+	//deQueue();
 	
-  RED();
-	ddlay(2);
+	while(1){
+		
+	RED();
+	ddlay(0xFFFF);	
+	
+	// Fails because front = -1
+  
+	
+  if(a==1){
+		a=0;	
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);
+	ddlay(0xFFFF);	
+	deQueue();
+	ddlay(0x03);
   enQueue(1);
+	ddlay(0x03);
   enQueue(2);
+	ddlay(0x03);
   enQueue(3);
+	ddlay(0x03);
   enQueue(4);
+	ddlay(0x03);
   enQueue(5);
-	//delay(1000);
+	ddlay(0x03);
   // Fails to enqueue because front == 0 && rear == SIZE - 1
   enQueue(6);
+	ddlay(0x03);
   
-	//delay(1000);
+	
   display();
-	//delay(1000);
+	ddlay(0x03);
+	
   deQueue();
+	ddlay(0x03);
+  
+	display();
+	ddlay(0x03);
 	
-	//delay(1000);
-  display();
 	
-	//delay(1000);
   enQueue(7);
-	//delay(1000);
+	ddlay(0x03);
+	
   display();
-
-  // Fails to enqueue because front == rear + 1
+	ddlay(0x03);
+  
+	// Fails to enqueue because front == rear + 1
   enQueue(8);
+	}
+	
+	
 	GREEN();
+	ddlay(0xFFFF);
+	}
 	while(1);
   return 0;
  

@@ -49,6 +49,9 @@ void UR_config(){
 	
 	USART_Init(USART1,&USART_InitStruct);
 	
+	USART_ClearITPendingBit(USART1,USART_IT_RXNE);
+	USART_ClearFlag(USART1,USART_FLAG_ORE);
+	
 	USART_Cmd(USART1,  ENABLE);
 }
 
