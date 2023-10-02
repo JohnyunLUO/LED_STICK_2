@@ -4,6 +4,7 @@
 ".\objects\queue.o"
 ".\objects\usart.o"
 ".\objects\systicks.o"
+".\objects\key.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\stm32f10x_rcc.o"

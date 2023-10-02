@@ -429,6 +429,16 @@
               <FileType>5</FileType>
               <FilePath>.\Systicks.h</FilePath>
             </File>
+            <File>
+              <FileName>KEY.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\KEY.c</FilePath>
+            </File>
+            <File>
+              <FileName>KEY.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\KEY.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

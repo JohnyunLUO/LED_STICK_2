@@ -27,18 +27,7 @@ void LED_config(void){
 
 } 
 
-void ddlay(uint32_t sec){
 
-	
-	while(sec){
-		int Z=9;
-		while(Z){
-			Z--;
-		}
-		sec--;
-	}
-}
-  
   int a=1;
   int k=1,l=1;
 
@@ -51,8 +40,8 @@ int main(void)
 
 	//UR_Print("12345\n\r");
 	
-	//
-	/*Systicks_Init();
+	
+	/*
 	
 	while(1){
 	
@@ -63,7 +52,7 @@ int main(void)
 	delay(1000);
 	}*/
 	//deQueue();
-	while(k);
+	//while(k);
 	while(1){
 		
 	RED();
@@ -71,53 +60,46 @@ int main(void)
 	
 	// Fails because front = -1
   
-	
+	if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)==1){
+		BLUE();
+		delay(3000);
+	}
   if(a==1){
-		a=0;	
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);
-	ddlay(0xFFFF);	
+		a=0;
+			delay(6000);
+		
 	deQueue();
-	ddlay(0x03);
+	delay(1000);
   enQueue(1);
-	ddlay(0x03);
+	delay(1000);
   enQueue(2);
-	ddlay(0x03);
+	delay(1000);
   enQueue(3);
-	ddlay(0x03);
+	delay(1000);
   enQueue(4);
-	ddlay(0x03);
+	delay(1000);
   enQueue(5);
-	ddlay(0x03);
+	delay(1000);
   // Fails to enqueue because front == 0 && rear == SIZE - 1
   enQueue(6);
-	ddlay(0x03);
+	delay(1000);
   
 	
   display();
-	ddlay(0x03);
+	delay(1000);
 	
   deQueue();
-	ddlay(0x03);
+	delay(1000);
   
 	display();
-	ddlay(0x03);
+	delay(1000);
 	
 	
   enQueue(7);
-	ddlay(0x03);
+	delay(1000);
 	
   display();
-	ddlay(0x03);
+	delay(1000);
   
 	// Fails to enqueue because front == rear + 1
   enQueue(8);
@@ -125,7 +107,7 @@ int main(void)
 	
 	
 	GREEN();
-	ddlay(0xFFFF);
+	delay(1000);
 	}
 	while(1);
   return 0;

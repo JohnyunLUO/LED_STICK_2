@@ -1,4 +1,6 @@
 #include "USART.h"
+#include "LED.h"
+#include "QUEUE.h"
 
 void UR_config(){	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,  ENABLE);
@@ -53,22 +55,28 @@ void UR_config(){
 	USART_ClearFlag(USART1,USART_FLAG_ORE);
 	
 	USART_Cmd(USART1,  ENABLE);
+	
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 }
 
 void UR_NVIC_config(){
 	
 	NVIC_InitTypeDef NVIC_InitStruct;
 	
+	
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+	NVIC_SetPriority(SysTick_IRQn, 0);
+	
 	NVIC_InitStruct.NVIC_IRQChannel=USART1_IRQn ;                    /*!< Specifies the IRQ channel to be enabled or disabled.
                                                    This parameter can be a value of @ref IRQn_Type 
                                                    (For the complete STM32 Devices IRQ Channels list, please
                                                     refer to stm32f10x.h file) */
 
-  NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority=0 ;  /*!< Specifies the pre-emption priority for the IRQ channel
+  NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority=1 ;  /*!< Specifies the pre-emption priority for the IRQ channel
                                                    specified in NVIC_IRQChannel. This parameter can be a value
                                                    between 0 and 15 as described in the table @ref NVIC_Priority_Table */
 
-  NVIC_InitStruct.NVIC_IRQChannelSubPriority=0;         /*!< Specifies the subpriority level for the IRQ channel specified
+  NVIC_InitStruct.NVIC_IRQChannelSubPriority=1;         /*!< Specifies the subpriority level for the IRQ channel specified
                                                    in NVIC_IRQChannel. This parameter can be a value
                                                    between 0 and 15 as described in the table @ref NVIC_Priority_Table */
 
@@ -98,9 +106,29 @@ char* UR_receive(void){
 	while(USART_GetFlagStatus(USART1,USART_FLAG_RXNE)){
 		
 		receive[i]=USART_ReceiveData(USART1);
-		
+		USART_SendData(USART1,receive[i]);
 		i++;
 	return receive;	
 	}
 	
+}
+
+void USART1_IRQHandler()
+{	char *enter="\n\r";
+	char c=0;
+	LedGreenToggle();
+	if(USART_GetITStatus(USART1, USART_IT_RXNE)){
+		c = USART_ReceiveData(USART1);
+		USART_SendData(USART1,c);
+		if(c!='\r'){
+			 enQueue(c);
+		}
+		else{
+			for(int i=0;i<2;i++){
+				 enQueue(enter[i]);
+			}
+			
+		}
+		
+	}
 }

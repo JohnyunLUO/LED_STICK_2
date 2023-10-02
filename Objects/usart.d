@@ -13,4 +13,5 @@
   D:\Users\Swift3\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_usart.h \
   D:\Users\Swift3\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h \
   D:\Users\Swift3\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\RTE_Driver\GPIO_STM32F10x.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h LED.h QUEUE.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h

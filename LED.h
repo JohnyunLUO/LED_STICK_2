@@ -6,8 +6,10 @@
 
 #endif
 
-void GREEN();
+void GREEN(void);
 
-void BLUE();
+void BLUE(void);
 
-void RED();
+void RED(void);
+
+void LedGreenToggle(void);
