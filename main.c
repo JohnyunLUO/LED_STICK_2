@@ -28,7 +28,7 @@ void LED_config(void){
 } 
 
 
-  int a=1;
+  int a=0;
   int k=1,l=1;
 
 int main(void)
@@ -61,48 +61,51 @@ int main(void)
 	// Fails because front = -1
   
 	if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)==1){
+		a=1;
 		BLUE();
 		delay(3000);
+	
 	}
   if(a==1){
 		a=0;
-			delay(6000);
 		
-	deQueue();
-	delay(1000);
-  enQueue(1);
-	delay(1000);
-  enQueue(2);
-	delay(1000);
-  enQueue(3);
-	delay(1000);
-  enQueue(4);
-	delay(1000);
-  enQueue(5);
-	delay(1000);
-  // Fails to enqueue because front == 0 && rear == SIZE - 1
-  enQueue(6);
-	delay(1000);
-  
+		deQueue();
+		delay(1000);
+		enQueue(1);
+		delay(1000);
+		enQueue(2);
+		delay(1000);
+		enQueue(3);
+		delay(1000);
+		enQueue(4);
+		delay(1000);
+		enQueue(5);
+		delay(1000);
+		// Fails to enqueue because front == 0 && rear == SIZE - 1
+		enQueue(6);
+		delay(1000);
+		
+		
+		display();
+		delay(1000);
+		
+		deQueue();
+		delay(1000);
+		
+		display();
+		delay(1000);
+		
+		
+		enQueue(7);
+		delay(1000);
+		
+		display();
+		delay(1000);
+		
+		// Fails to enqueue because front == rear + 1
+		enQueue(8);
 	
-  display();
-	delay(1000);
-	
-  deQueue();
-	delay(1000);
-  
-	display();
-	delay(1000);
-	
-	
-  enQueue(7);
-	delay(1000);
-	
-  display();
-	delay(1000);
-  
-	// Fails to enqueue because front == rear + 1
-  enQueue(8);
+
 	}
 	
 	
