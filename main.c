@@ -36,7 +36,7 @@ int main(void)
 	LED_config();
 	Systicks_Init();
 	UR_config();
-	UR_NVIC_config();
+	UR_NVIC_config(); //remember to execute NVIC configuration.
 	//UR_Print("12345\n\r");
 	
 	
@@ -59,16 +59,16 @@ int main(void)
 	
 	// Fails because front = -1
   
-	/*if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)==1){
+	if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)==1){
 		a=1;
 		BLUE();
 		delay(3000);
 	
-	}*/
+	}
   if(a==1){
 		a=0;
 		
-		deQueue();
+		/*deQueue();
 		delay(1000);
 		enQueue(1);
 		delay(1000);
@@ -96,13 +96,13 @@ int main(void)
 		
 		
 		enQueue(7);
-		delay(1000);
+		delay(1000);*/
 		
 		display();
 		delay(1000);
 		
 		// Fails to enqueue because front == rear + 1
-		enQueue(8);
+		//enQueue(8);
 	
 
 	}

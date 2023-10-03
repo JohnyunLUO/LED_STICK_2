@@ -29,13 +29,14 @@ void enQueue(int element) {
         if (front == -1) front = 0;
         rear = (rear + 1) % SIZE;
         items[rear] = element;
-				UR_Print("\n\r Inserted -> ");
+				UR_Print("\r\nInserted -> ");
 			
 				//UR_Print(&items[rear]+0x30);
 				//USART_SendData(USART1,items[rear]+0x30);
 			
-			  sprintf(buffer,"%d",element);
+			  sprintf(buffer,"%c",element);
 				UR_Print(buffer);
+				UR_Print("\r\n");
     }
 }
 
@@ -68,6 +69,7 @@ int deQueue() {
 // Display the queue
 void display() {
     int i;
+		char *buffer="";
     if (isEmpty())
 				UR_Print(" \r\n Empty Queue\r\n"); 
         
@@ -82,7 +84,8 @@ void display() {
             //UR_Print(&items[i]);
 			
 					while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==0);
-					USART_SendData(USART1,items[i]+0x30);  
+					sprintf(buffer,"%c",items[i]);
+					USART_SendData(USART1,*buffer);  
 					//The data transmitted using USART, whether it is in the form of an int or char, will be decoded using the ASCII table.
 					//In here, we want to send "1". According to ASCII code table, here we have to send "1+0X30".																	
 					//delay(1000);

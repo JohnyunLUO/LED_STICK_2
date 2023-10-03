@@ -119,14 +119,14 @@ char* UR_receive(void){
 void USART1_IRQHandler(void)
 {	int i=0;
 	char *enter="\n\r";
-	char *buffer="";
+	
 	uint16_t c=0;
 	LedGreenToggle();
 	if(USART_GetITStatus(USART1, USART_IT_RXNE)!=RESET){
 		c = USART_ReceiveData(USART1);
 		USART_SendData(USART1,c);
 		if(c!='\r'){
-			sprintf(buffer,"%c",c); 
+			
 			enQueue(c);
 		}
 		else{
