@@ -2,6 +2,7 @@
 #include "LED.h"
 #include "QUEUE.h"
 
+
 void UR_config(){	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,  ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,  ENABLE);
@@ -63,7 +64,7 @@ void UR_NVIC_config(){
 	
 	NVIC_InitTypeDef NVIC_InitStruct;
 	
-	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 	NVIC_SetPriority(SysTick_IRQn, 0);
 	
@@ -76,7 +77,7 @@ void UR_NVIC_config(){
                                                    specified in NVIC_IRQChannel. This parameter can be a value
                                                    between 0 and 15 as described in the table @ref NVIC_Priority_Table */
 
-  /*NVIC_InitStruct.NVIC_IRQChannelSubPriority=0;        !< Specifies the subpriority level for the IRQ channel specified
+  NVIC_InitStruct.NVIC_IRQChannelSubPriority=0;        /*!< Specifies the subpriority level for the IRQ channel specified
                                                    //in NVIC_IRQChannel. This parameter can be a value
                                                    between 0 and 15 as described in the table @ref NVIC_Priority_Table */
 
@@ -85,6 +86,8 @@ void UR_NVIC_config(){
                                                    This parameter can be set either to ENABLE or DISABLE */  
 
 	NVIC_Init(&NVIC_InitStruct);
+	
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 }
 
 void UR_Print(const char *Data){
@@ -116,13 +119,15 @@ char* UR_receive(void){
 void USART1_IRQHandler(void)
 {	int i=0;
 	char *enter="\n\r";
+	char *buffer="";
 	uint16_t c=0;
 	LedGreenToggle();
-	if(USART_GetITStatus(USART1, USART_IT_RXNE)){
+	if(USART_GetITStatus(USART1, USART_IT_RXNE)!=RESET){
 		c = USART_ReceiveData(USART1);
 		USART_SendData(USART1,c);
 		if(c!='\r'){
-			 enQueue(c);
+			sprintf(buffer,"%c",c); 
+			enQueue(c);
 		}
 		else{
 			for(i=0;i<2;i++){

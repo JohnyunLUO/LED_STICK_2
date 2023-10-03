@@ -35,17 +35,16 @@ int main(void)
 {
 	LED_config();
 	Systicks_Init();
-	
 	UR_config();
-
+	UR_NVIC_config();
 	//UR_Print("12345\n\r");
 	
 	
-	/*
 	
-	while(1){
 	
-	delay(1000);
+	//while(l);
+	
+	/*delay(1000);
 	RED();
 	delay(1000);
 	BLUE();
@@ -60,12 +59,12 @@ int main(void)
 	
 	// Fails because front = -1
   
-	if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)==1){
+	/*if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)==1){
 		a=1;
 		BLUE();
 		delay(3000);
 	
-	}
+	}*/
   if(a==1){
 		a=0;
 		
